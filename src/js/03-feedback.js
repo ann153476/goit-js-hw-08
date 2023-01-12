@@ -24,9 +24,9 @@ formEl.addEventListener("input", Throttle(myInput , 500));
 
 formEl.addEventListener(`submit`, event => {
     event.preventDefault();
-    console.log(getobj);
+    console.log(JSON.parse(getobj));
     formEl.reset();
-   // localStorage.removeItem("feedback-form-state");
+    //localStorage.removeItem("feedback-form-state");
     
 });
 
