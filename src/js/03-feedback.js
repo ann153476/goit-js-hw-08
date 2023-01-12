@@ -5,7 +5,11 @@ const formEl = document.querySelector('form');
 const email = document.querySelector('[name="email"]');
 const message = document.querySelector('[name="message"]');
 
-getobj =localStorage.getItem("feedback-form-state") || {};
+getobj =localStorage.getItem("feedback-form-state");
+
+email.value=JSON.parse(getobj).email;
+message.value=JSON.parse(getobj).message;
+
 
 function myInput (event){
     event.preventDefault();
@@ -20,14 +24,12 @@ formEl.addEventListener("input", Throttle(myInput , 500));
 
 formEl.addEventListener(`submit`, event => {
     event.preventDefault();
-    if(email.value || message.value === true){
-        formEl.reset();
-    }else{
-        console.log("заповни поля");
-    }
+    console.log(getobj);
+    formEl.reset();
+   // localStorage.removeItem("feedback-form-state");
     
 });
 
-console.log(getobj);
+
 
 
